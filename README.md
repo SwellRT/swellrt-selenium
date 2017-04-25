@@ -30,7 +30,7 @@ Also, provide enough blank lines for all the threads you will run with the tool.
 
 To install web drivers check out following links:
 
-http://www.seleniumhq.org/docs/03_webdriver.jsp#setting-up-webdriver-project
-https://sites.google.com/a/chromium.org/chromedriver/
-https://github.com/mozilla/geckodriver
+- http://www.seleniumhq.org/docs/03_webdriver.jsp#setting-up-webdriver-project
+- https://sites.google.com/a/chromium.org/chromedriver/
+- https://github.com/mozilla/geckodriver
 
