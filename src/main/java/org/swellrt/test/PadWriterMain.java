@@ -16,11 +16,11 @@ public class PadWriterMain {
 
   public static String[] defaultAppArgs = {
       "/home/pablo/Development/projects/swellrt-selenium/webdriver/chromedriver,/home/pablo/Development/projects/swellrt-selenium/webdriver/geckodriver",
-      "https://jetpad.net/edit/jp-test-1",
+      "http://localhost:9898/test-pad.html?id=test4",
       "/home/pablo/Development/projects/swellrt-selenium/input/input-1.txt,4,firefox",
-      "/home/pablo/Development/projects/swellrt-selenium/input/input-2.txt,10"
-
+      "/home/pablo/Development/projects/swellrt-selenium/input/input-2.txt,8,firefox"
   };
+
   /*
    * "/home/pablo/Development/projects/swellrt-selenium/input/input-2.txt,8,firefox",
    * "/home/pablo/Development/projects/swellrt-selenium/input/input-1.txt,10"
