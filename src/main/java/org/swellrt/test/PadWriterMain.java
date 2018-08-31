@@ -12,25 +12,22 @@ import java.util.stream.Stream;
 
 public class PadWriterMain {
 
+  /**
+   * Arguments example
 
-
-  public static String[] defaultAppArgs = {
-      "/home/pablo/Development/projects/swellrt-selenium/webdriver/chromedriver,/home/pablo/Development/projects/swellrt-selenium/webdriver/geckodriver",
-      "http://localhost:9898/test-pad.html?id=test4",
-      "/home/pablo/Development/projects/swellrt-selenium/input/input-1.txt,4,firefox",
-      "/home/pablo/Development/projects/swellrt-selenium/input/input-2.txt,8,firefox"
-  };
-
-  /*
-   * "/home/pablo/Development/projects/swellrt-selenium/input/input-2.txt,8,firefox",
-   * "/home/pablo/Development/projects/swellrt-selenium/input/input-1.txt,10"
+      "./swellrt-selenium/webdriver/chromedriver,./swellrt-selenium/webdriver/geckodriver"
+      "https://jetpad.net/edit/prueba"
+      "./swellrt-selenium/input/input-1.txt,4"
+      "./swellrt-selenium/input/input-2.txt,8"
    */
+
+
 
   public static void main(String[] args) throws IOException {
 
-    if (args.length < 4) {
-      System.out.println("No arguments");
-      args = defaultAppArgs;
+    if (args.length < 3) {
+      System.out.println("No enough arguments!");
+      return;
     }
 
     String[] browsers = args[0].split(",");
@@ -45,7 +42,6 @@ public class PadWriterMain {
     });
 
     String padUrl = args[1];
-
     List<PadWriter> tasks =
         Arrays.stream(args)
             .skip(2)

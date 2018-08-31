@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import org.openqa.selenium.By;
@@ -22,12 +23,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class PadWriter implements Callable<Optional<String>> {
 
+  static AtomicInteger threadCounter = new AtomicInteger(0);
+
   String waveEditorDivContainerId = "editor";
 
   final String inputFileUri;
   final String padUrl;
   final int startLine;
   final String browser;
+  final int id;
 
   final Random random = new Random(System.currentTimeMillis());
 
@@ -39,6 +43,7 @@ public class PadWriter implements Callable<Optional<String>> {
     this.startLine = startLine;
     this.browser = browser != null && (browser.equals("chrome") || browser.equals("firefox"))
         ? browser : "chrome";
+    this.id = threadCounter.incrementAndGet();
 
   }
 
@@ -60,6 +65,14 @@ public class PadWriter implements Callable<Optional<String>> {
 
   @Override
   public Optional<String> call() {
+
+    try {
+
+      Thread.sleep(5000 * (id - 1));
+
+    } catch (InterruptedException e1) {
+      e1.printStackTrace();
+    }
 
     Optional<String> result = Optional.empty();
 
@@ -107,10 +120,12 @@ public class PadWriter implements Callable<Optional<String>> {
 
 
           // simulate delete and rewrite some chars
-          if (browser.equals("chrome") && w.length() > 2 && w.length() % 2 == 0) {
-            writeChars(contentEditable, "\b\b\b\b");
-            writeChars(contentEditable, w.substring(w.length() - 3, w.length()) + " ");
-          }
+          // if (browser.equals("chrome") && w.length() > 2 && w.length() % 2 ==
+          // 0) {
+          // writeChars(contentEditable, "\b\b\b\b");
+          // writeChars(contentEditable, w.substring(w.length() - 3, w.length())
+          // + " ");
+          // }
 
         } catch (InterruptedException e) {
           System.out.println("PadWriter Thread interrupted");

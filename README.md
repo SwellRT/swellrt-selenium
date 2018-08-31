@@ -1,6 +1,6 @@
 # swellrt-selenium
 
-Simple Java/Selenium scripts to play with concurrent real-time writing in the Wave editor or SwellRT editor component-
+Simple Java/Selenium scripts to play with concurrent real-time writing in the text editor of Wave/SwellRT.
 
 ## Usage
 
@@ -12,18 +12,18 @@ Run main class `PadWriteMain.java` with following command line arguments:
 
 The tool will start a new thread per each input file: 
 
-- the thread will load the pad url in a new Web browser instance 
-- it will write the contents of the input file, with mimic human writing, in the pad. 
-- Each thread will start writing in the corresponding line.
-- Optionally the browser brand of each thread can be provided with following codes: `chrome` (default), `firefox` 
+- The thread will load the pad url in a new Web browser instance 
+- It will write the contents of the input file in the pad "simulating" human writing. 
+- Writing will start at the provided <line-to-start>
+- Optionally the browser brand of each thread can be provided with following codes: `chrome` (default) or `firefox` 
 
-After all threads end writing, the tool will wait for key input to close browser windows.
+After all threads finish the writing, the tool will wait for key input to close browser windows.
 
 
 ## Setting up a target Wave/SwellRT editor
 
 Before executing the tool, ensure your app automatically enables the edit mode in the editor component when it's loaded in the browser.
-Also, provide enough blank lines for all the threads you will run with the tool.
+Also, the editor panel should have at least a blank lines for any if the threads run with the tool.
 
 
 ## Configuring web drivers
